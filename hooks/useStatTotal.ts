@@ -12,7 +12,7 @@ export const useStatTotal = () => {
       0
     )
     setTotal(statSum)
-  }, [finalStats])
+  }, [statsWithModifiers])
 
   return total
 }

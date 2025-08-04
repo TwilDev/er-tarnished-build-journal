@@ -2,6 +2,7 @@
 import { useClassStore } from "@/store/classStore"
 import { useState } from "react"
 import FinalStats from "./FinalStats"
+import RuneCount from "./RuneCount"
 
 export default function CharacterStats() {
   const level = useClassStore((state) => state.level)
@@ -121,7 +122,7 @@ export default function CharacterStats() {
           <FinalStats />
         </div>
       </div>
-      {/* <RuneCount /> */}
+      <RuneCount />
     </div>
   )
 }
