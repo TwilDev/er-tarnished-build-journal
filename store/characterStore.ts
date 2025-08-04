@@ -52,3 +52,4 @@ export const useCharacterStore = create<State & Actions>((set) => ({
       greatRune: { ...state.greatRune, active },
     })),
 }))
+

@@ -17,7 +17,6 @@ export default function ClassPicker() {
   const setBaseStats = useClassStore((state) => state.setBaseStats)
   const setStats = useClassStore((state) => state.setStats)
   const setLevel = useClassStore((state) => state.setLevel)
-  const setTotal = useClassStore((state) => state.setTotal)
 
   const updateClassOnChange = (newClass: string) => {
     const newBaseStats = { ...baseClasses[newClass as keyof typeof baseClasses] }
@@ -43,7 +42,6 @@ export default function ClassPicker() {
 
     const statSum = Object.values(newClassStats).reduce((acc, val) => acc + val, 0)
     const level = statSum - 79
-    setTotal(statSum)
     setLevel(level)
   }
 

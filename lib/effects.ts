@@ -1,4 +1,6 @@
-type Effect = {
+import effectData from '@/data/effects/effectData.json'
+
+export type Effect = {
   Source: string
   vigor: number
   mind: number
@@ -37,3 +39,28 @@ type Effect = {
   itemDiscovery: number
   Effects: string
 }
+
+// Create a lookup map for faster effect retrieval
+const effectsMap = new Map<string, Effect>()
+
+// Initialize the effects map
+if (effectData.effectData) {
+  effectData.effectData.forEach((effect: Effect) => {
+    effectsMap.set(effect.Source, effect)
+  })
+}
+
+export const getEffectsForItem = (itemName: string): Effect[] => {
+  const effect = effectsMap.get(itemName)
+  return effect ? [effect] : []
+}
+
+export const getAllEffects = (): Effect[] => {
+  return Array.from(effectsMap.values())
+}
+
+export const getEffectsBySource = (sources: string[]): Effect[] => {
+  return sources
+    .map(source => effectsMap.get(source))
+    .filter((effect): effect is Effect => effect !== undefined)
+} 

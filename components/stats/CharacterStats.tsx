@@ -1,6 +1,7 @@
-
+"use client"
 import { useClassStore } from "@/store/classStore"
 import { useState } from "react"
+import FinalStats from "./FinalStats"
 
 export default function CharacterStats() {
   const level = useClassStore((state) => state.level)
@@ -117,7 +118,7 @@ export default function CharacterStats() {
               )
             })}
           </div>
-          {/* <FinalStats /> */}
+          <FinalStats />
         </div>
       </div>
       {/* <RuneCount /> */}
