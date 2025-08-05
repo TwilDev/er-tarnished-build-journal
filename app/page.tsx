@@ -1,4 +1,5 @@
 "use server"
+import AttributesWrapper from "@/components/attributes/AttributesWrapper"
 import CharacterStatsWrapper from "@/components/stats/CharacterStatsWrapper"
 
 export default async function Home() {
@@ -12,9 +13,9 @@ export default async function Home() {
           <TalismanSelection />
           <WeaponSelection />
         </div> */}
-        {/* <div className="flex w-[350px] flex-col items-center justify-center gap-4">
-          <CoreStats />
-        </div> */}
+        <div className="flex w-[350px] flex-col items-center justify-center gap-4">
+          <AttributesWrapper />
+        </div>
       </div>
     </div>
   )

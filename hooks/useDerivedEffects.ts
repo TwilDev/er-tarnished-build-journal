@@ -21,12 +21,14 @@ export const useDerivedEffects = () => {
 
     const effects: Effect[] = []
 
+    // Fetch effects from armour pieces & talismans
     equipment.forEach((item) => {
       const match =
         effectData.find((effect) => effect?.Source === item?.label) || null
       if (match) effects.push(match as Effect)
     })
 
+    // Fetch effects from great rune if active
     if (greatRune.selected && greatRune.active) {
       const runeEffect = effectData.find(
         (effect) => effect?.Source === greatRune.selected
