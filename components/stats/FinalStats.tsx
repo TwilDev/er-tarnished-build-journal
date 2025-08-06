@@ -2,7 +2,7 @@ import { useStatsWithModifiers } from "@/hooks/useStatsWithModifiers"
 
 
 export default function FinalStats() {
-  const { statsWithModifiers } = useStatsWithModifiers()
+  const statsWithModifiers = useStatsWithModifiers()
 
   return (
     <div className="flex justify-center items-top gap-4">

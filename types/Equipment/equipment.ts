@@ -67,3 +67,31 @@ export type WeaponData = {
   weapon: string
   weaponClass: string
 }
+
+export type ArmourProtector = {
+  ID: number
+  Name?: string
+  sortId: number
+  resistSleep: number
+  resistMadness: number
+  toughnessCorrectRate: number
+  weight: number
+  residentSpEffectId: number
+  residentSpEffectId2: number
+  residentSpEffectId3: number
+  resistPoison: number
+  resistDisease: number
+  resistBlood: number
+  resistCurse: number
+  protectorCategory: number
+  neutralDamageCutRate: number
+  slashDamageCutRate: number
+  blowDamageCutRate: number
+  thrustDamageCutRate: number
+  magicDamageCutRate: number
+  fireDamageCutRate: number
+  thunderDamageCutRate: number
+  darkDamageCutRate: number
+  resistFreeze: number
+}
+

@@ -12,7 +12,7 @@ type ValueFinder = {
 }
 
 export default function useVitalStats() {
-  const { statsWithModifiers } = useStatsWithModifiers()
+  const statsWithModifiers = useStatsWithModifiers()
   const effects = useDerivedEffects()
 
   const lookupMapper: ValueFinder = {

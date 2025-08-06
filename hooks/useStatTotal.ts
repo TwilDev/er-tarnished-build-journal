@@ -4,7 +4,7 @@ import { useStatsWithModifiers } from './useStatsWithModifiers'
 export const useStatTotal = () => {
   const [total, setTotal] = useState<number>(0)
 
-  const { statsWithModifiers } = useStatsWithModifiers()
+  const statsWithModifiers = useStatsWithModifiers()
 
   useEffect(() => {
     const statSum = Object.values(statsWithModifiers).reduce(

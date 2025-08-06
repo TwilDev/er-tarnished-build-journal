@@ -1,3 +1,4 @@
+import Defences from "./Defences";
 import Vitals from "./Vitals";
 
 export default function AttributesWrapper() {
@@ -6,7 +7,7 @@ export default function AttributesWrapper() {
       <div className='flex flex-col items-center mb-2'>
         <Vitals />
         <hr className="py-2"/>
-        {/* <Defences /> */}
+        <Defences />
       </div>
     </div>
   )

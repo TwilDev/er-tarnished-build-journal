@@ -23,7 +23,5 @@ export const useStatsWithModifiers = () => {
 
   }, [effects, stats])
 
-  return {
-    statsWithModifiers
-  }
+  return statsWithModifiers
 }
