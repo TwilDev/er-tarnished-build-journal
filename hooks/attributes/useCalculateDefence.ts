@@ -52,8 +52,8 @@ export default function useCalculateDefence() {
       adjustment: number[]
       stat: keyof IStats
     }) => {
-      const flatValue = flat[total - 1]
-      const adjustmentValue = adjustment[statsWithModifier[stat] - 1]
+      const flatValue = Math.max(0, flat[total - 1])
+      const adjustmentValue = Math.max(0, adjustment[statsWithModifier[stat] - 1])
       return Math.floor(flatValue + adjustmentValue)
     }
 
@@ -88,7 +88,7 @@ export default function useCalculateDefence() {
         adjustment: defFire,
         stat: 'vigor',
       }),
-      lightning: Math.floor(defFlat[total - 1]),
+      lightning: Math.floor(defFlat[Math.max(0, total - 1)] || 0),
       holy: calculateDefence({
         flat: defFlat,
         adjustment: defHoly,
