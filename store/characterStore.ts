@@ -1,4 +1,4 @@
-import { Armour, TalismanSlots, WeaponSlots } from '@/types/Equipment/equipment'
+import { Armour, Talisman, TalismanSlots, Weapon, WeaponSlots } from '@/types/Equipment/equipment'
 import { GreatRune, GreatRuneSelection } from '@/types/GreatRunes/greatRunes'
 import { create } from 'zustand'
 
@@ -14,6 +14,9 @@ type Actions = {
   setCharacterName: (value: string) => void
   setGreatRuneSelected: (value: GreatRune) => void
   setGreatRuneActive: (active: boolean) => void
+  setTalismans: (value: TalismanSlots) => void
+  setWeapons: (value: WeaponSlots) => void
+  setWeapon: (key: keyof WeaponSlots, value: Weapon) => void
 }
 
 export const useCharacterStore = create<State & Actions>((set) => ({
@@ -51,5 +54,9 @@ export const useCharacterStore = create<State & Actions>((set) => ({
     set((state) => ({
       greatRune: { ...state.greatRune, active },
     })),
+  setTalismans: (value: TalismanSlots) => set({ talismans: value }),
+  setWeapons: (value: WeaponSlots) => set({ weapons: value }),
+  setWeapon: (key: keyof WeaponSlots, value: Weapon) =>
+    set((state) => ({ weapons: { ...state.weapons, [key]: value } }))
 }))
 
