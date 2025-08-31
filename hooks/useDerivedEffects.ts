@@ -1,6 +1,6 @@
 import { useCharacterStore } from "@/store/characterStore"
 import { useMemo } from "react"
-import { effectData } from '@/data/effects/effectData.json';
+import effectsData from '@/data/effects/effectsData.json';
 
 export const useDerivedEffects = () => {
   const armour = useCharacterStore((state) => state.armour)
@@ -24,14 +24,14 @@ export const useDerivedEffects = () => {
     // Fetch effects from armour pieces & talismans
     equipment.forEach((item) => {
       const match =
-        effectData.find((effect) => effect?.Source === item?.label) || null
-      if (match) effects.push(match as Effect)
+        effectsData.find((effect) => effect?.Name === item?.label) || null
+      if (match) effects.push(match)
     })
 
     // Fetch effects from great rune if active
     if (greatRune.selected && greatRune.active) {
-      const runeEffect = effectData.find(
-        (effect) => effect?.Source === greatRune.selected
+      const runeEffect = effectsData.find(
+        (effect) => effect?.Name === greatRune.selected
       )
       if (runeEffect) effects.push(runeEffect as Effect)
     }

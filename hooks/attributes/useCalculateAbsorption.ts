@@ -15,21 +15,15 @@ type DamageTypeKey =
   | 'lightning'
   | 'holy' 
 
-const DAMAGE_MAP: Record<
-  DamageTypeKey,
-  { armourKey: string; effectKey: keyof Effect }
-> = {
-  physical: { armourKey: 'neutralDamageCutRate', effectKey: 'physCutRate' },
-  strike: { armourKey: 'blowDamageCutRate', effectKey: 'strikeCutRate' },
-  slash: { armourKey: 'slashDamageCutRate', effectKey: 'slashCutRate' },
-  pierce: { armourKey: 'thrustDamageCutRate', effectKey: 'pierceCutRate' },
-  magical: { armourKey: 'magicDamageCutRate', effectKey: 'magCutRate' },
-  fire: { armourKey: 'fireDamageCutRate', effectKey: 'fireCutRate' },
-  lightning: {
-    armourKey: 'thunderDamageCutRate',
-    effectKey: 'lightningCutRate',
-  },
-  holy: { armourKey: 'darkDamageCutRate', effectKey: 'holyCutRate' },
+const DAMAGE_MAP: Record<DamageTypeKey, keyof Effect> = {
+  physical: 'neutralDamageCutRate',
+  strike: 'blowDamageCutRate',
+  slash: 'slashDamageCutRate',
+  pierce: 'thrustDamageCutRate',
+  magical: 'magicDamageCutRate',
+  fire: 'fireDamageCutRate',
+  lightning: 'thunderDamageCutRate',
+  holy: 'darkDamageCutRate',
 }
 
 // Takes all armour and locates all values for each absorption value associated with the piece, multiplying together to return a final absorption
@@ -39,7 +33,7 @@ function calculateAbsorption({armour, damageType}: {armour: Armour, damageType: 
     const armourPiece: ArmourProtector | undefined = armourProtectorParams.find(
       (a) => a.ID === value?.value?.id
     )
-    const damageKey = DAMAGE_MAP[damageType as DamageTypeKey]?.armourKey
+    const damageKey = DAMAGE_MAP[damageType as DamageTypeKey]
     return armourPiece && damageKey ? armourPiece[damageKey as keyof ArmourProtector] as number : 1
   })
   return damageCutRates.length ? damageCutRates.reduce((a, b) => a * b, 1) : 1
@@ -72,10 +66,10 @@ export default function useCalculateAbsorption() {
 
     for (const key in DAMAGE_MAP) {
       const damageKey = key as DamageTypeKey
-      const { armourKey, effectKey } = DAMAGE_MAP[damageKey]
+      const damageLookupKey = DAMAGE_MAP[damageKey]
 
-      const armourAbs = calculateAbsorption({ armour, damageType: armourKey })
-      const effectsAbs = calculateEffectAbsorption({ effects, damageType: effectKey })
+      const armourAbs = calculateAbsorption({ armour, damageType: damageLookupKey })
+      const effectsAbs = calculateEffectAbsorption({ effects, damageType: damageLookupKey })
 
       newValues[damageKey] = (100 * (1 - armourAbs * effectsAbs)).toFixed(3)
     }

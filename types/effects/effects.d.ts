@@ -1,5 +1,10 @@
 type Effect = {
-  Source: string
+  Name: string
+  Effects: string | null
+  'Overwrite Effects': string | null
+  'Import Effects': string | null
+  conditionHp: number
+  conditionHpRate: number
   vigor: number
   mind: number
   endurance: number
@@ -8,32 +13,39 @@ type Effect = {
   intelligence: number
   faith: number
   arcane: number
-  hpRate: number
-  mpRate: number
-  stamRate: number
-  weightRate: number
-  physCutRate: number
-  strikeCutRate: number
-  slashCutRate: number
-  pierceCutRate: number
-  magCutRate: number
-  fireCutRate: number
-  lightningCutRate: number
-  holyCutRate: number
-  physCutRateMP: number
-  strikeCutRateMP: number
-  slashCutRateMP: number
-  pierceCutRateMP: number
-  magCutRateMP: number
-  fireCutRateMP: number
-  lightningCutRateMP: number
-  holyCutRateMP: number
-  fullHpCutRate: number
-  criticalHpCutRate: number
-  immunityAddRate: number
-  robustnessAddRate: number
-  focusAddRate: number
-  vitalityAddRate: number
-  itemDiscovery: number
-  Effects: string
+  maxHpRate: number
+  maxMpRate: number
+  maxStaminaRate: number
+  equipWeightChangeRate: number
+  neutralDamageCutRate: number
+  blowDamageCutRate: number
+  slashDamageCutRate: number
+  thrustDamageCutRate: number
+  magicDamageCutRate: number
+  fireDamageCutRate: number
+  thunderDamageCutRate: number
+  darkDamageCutRate: number
+  defEnemyDmgCorrectRate_Physics: number
+  defEnemyDmgCorrectRate_Magic: number
+  defEnemyDmgCorrectRate_Fire: number
+  defEnemyDmgCorrectRate_Thunder: number
+  defEnemyDmgCorrectRate_Dark: number
+  defPlayerDmgCorrectRate_Physics: number
+  defPlayerDmgCorrectRate_Magic: number
+  defPlayerDmgCorrectRate_Fire: number
+  defPlayerDmgCorrectRate_Thunder: number
+  defPlayerDmgCorrectRate_Dark: number
+  changePoisonResistPoint: number
+  changeDiseaseResistPoint: number
+  changeBloodResistPoint: number
+  changeFreezeResistPoint: number
+  changeSleepResistPoint: number
+  changeMadnessResistPoint: number
+  changeCurseResistPoint: number
+  physicsAttackPowerRate: number
+  magicAttackPowerRate: number
+  fireAttackPowerRate: number
+  thunderAttackPowerRate: number
+  darkAttackPowerRate: number
+  itemDropRate: number
 }

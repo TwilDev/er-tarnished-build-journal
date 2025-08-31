@@ -7,7 +7,7 @@ const { HP, FP, END, EQUIPLOAD } = coreStatsTable
 type ValueFinder = {
   [key: string]: {
     table: number[]
-    key: 'hpRate' | 'mpRate' | 'stamRate'
+    key: 'maxHpRate' | 'maxMpRate' | 'maxStaminaRate'
   }
 }
 
@@ -18,15 +18,15 @@ export default function useVitalStats() {
   const lookupMapper: ValueFinder = {
     vigor: {
       table: HP,
-      key: 'hpRate',
+      key: 'maxHpRate',
     },
     mind: {
       table: FP,
-      key: 'mpRate',
+      key: 'maxMpRate',
     },
     endurance: {
       table: END,
-      key: 'stamRate',
+      key: 'maxStaminaRate',
     },
   }
   const calculateVitalStat = (stat: keyof IStats) => {

@@ -2,7 +2,6 @@ import { useClassStore } from "@/store/classStore"
 import { useDerivedEffects } from "./useDerivedEffects"
 import { useEffect, useState } from "react"
 
-
 export const useStatsWithModifiers = () => {
   const stats = useClassStore((state) => state.stats)
   const effects = useDerivedEffects()
